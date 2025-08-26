@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackingInventory", "..\Pack
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabellingInventory", "..\LabellingInventory\LabellingInventory.csproj", "{F3BA6289-6E41-4B31-AFB2-70A671B52F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldRobot", "..\OldRobot\OldRobot.csproj", "{CFAC341C-A5B9-8CFE-3B77-354B11554001}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,14 @@ Global
 		{F3BA6289-6E41-4B31-AFB2-70A671B52F07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3BA6289-6E41-4B31-AFB2-70A671B52F07}.Release|x64.ActiveCfg = Release|Any CPU
 		{F3BA6289-6E41-4B31-AFB2-70A671B52F07}.Release|x64.Build.0 = Release|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Debug|x64.Build.0 = Debug|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Release|x64.ActiveCfg = Release|Any CPU
+		{CFAC341C-A5B9-8CFE-3B77-354B11554001}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
