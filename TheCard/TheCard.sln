@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabellingInventory", "..\La
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldRobot", "..\OldRobot\OldRobot.csproj", "{CFAC341C-A5B9-8CFE-3B77-354B11554001}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordGeneric", "..\RecordGeneric\RecordGeneric.csproj", "{5D569C0B-F6AF-4AF1-B4E3-A483DD7C3B34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Delegate", "..\Advanced_Delegate\Advanced_Delegate.csproj", "{73D509F4-0674-4BB3-B48C-4F1A75D5F946}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

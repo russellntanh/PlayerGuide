@@ -20,6 +20,46 @@
             int[] result3 = calc.ChangeArrayElement(numbers, calc.Double);
             int[] result4 = calc.ChangeArrayElement(numbers, calc.Square);
 
+            // String operations using delegate
+            CustomString customString = new CustomString();
+            string input = "Hello World";
+            string reversed = customString.ProcessString(input, customString.ReverseString);
+            string upper = customString.ProcessString(input, customString.ToUpperCase);
+            string lower = customString.ProcessString(input, customString.ToLowerCase);
+        }
+    }
+
+    public class CustomString
+    {
+        // declare a delegate
+        public delegate string StringOperation(string input);
+
+        public string ProcessString(string input, StringOperation operation)
+        {
+            return operation(input);
+        }
+
+        // method to reverse a string
+        public string ReverseString(string input)
+        {
+            string result = string.Empty;
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                result += input[i];
+            }
+            return result;
+        }
+
+        // method to convert a string to uppercase
+        public string ToUpperCase(string input)
+        {
+            return input.ToUpper();
+        }
+
+        // method to convert a string to lowercase
+        public string ToLowerCase(string input)
+        {
+            return input.ToLower();
         }
     }
 
@@ -33,6 +73,7 @@
             for (int i = 0; i < array.Length; i++)
             {
                 result[i] = operation(array[i]);
+                result[i] = operation.Invoke(array[i]);
             }
             return result;
         }
