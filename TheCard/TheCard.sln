@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordGeneric", "..\RecordG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Delegate", "..\Advanced_Delegate\Advanced_Delegate.csproj", "{73D509F4-0674-4BB3-B48C-4F1A75D5F946}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Event", "..\Advanced_Event\Advanced_Event.csproj", "{1EB90718-C88B-4115-886F-E1E7472FFABF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
