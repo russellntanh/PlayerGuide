@@ -8,9 +8,13 @@ namespace Advanced_Event
         {
             Console.WriteLine("EVENT IN C#");
 
-            Ship ship = new Ship();
-            MessageManager showMess = new MessageManager(ship);
-            ship.Run();
+            //Ship ship = new Ship();
+            //MessageManager showMess = new MessageManager(ship);
+            //ship.Run();
+
+            Asteroid asteroid = new Asteroid();
+            SoundManager soundManager = new SoundManager(asteroid);
+            asteroid.Run();
 
         }
     }
@@ -18,8 +22,8 @@ namespace Advanced_Event
     // publisher
     public class Ship
     {
-        public event Action ShowMessage; // event without param
-        public event Action<Point> ShowMessageLocation; // event with param
+        public event Action? ShowMessage; // event without param
+        public event Action<Point>? ShowMessageLocation; // event with param
 
         Random random = new Random();
         public Point location { get;set;} = new Point();
@@ -33,8 +37,8 @@ namespace Advanced_Event
 
                 if (i == 0)
                 {
-                    ShowMessage.Invoke();
-                    ShowMessageLocation.Invoke(location);
+                    ShowMessage?.Invoke();
+                    ShowMessageLocation?.Invoke(location);
                 }
             }
         }
@@ -62,6 +66,60 @@ namespace Advanced_Event
         public void ShowMessage(string messsage)
         {
             Console.WriteLine(messsage);
+        }
+    }
+
+    // Using EventHandler
+    public class AsteroidExplodedLocation : EventArgs
+    {
+        public Point Location { get;set;}
+        public AsteroidExplodedLocation(Point location)
+        {
+            Location = location;
+        }
+    }
+    public class Asteroid
+    {
+        public event EventHandler? ShipExploded; // EventHandler no param
+        public event EventHandler<AsteroidExplodedLocation>? AsteroidExplodedLocation; // with param
+
+        Point location { get; set; } = new Point();
+
+        Random random = new Random();
+
+        public void Run()
+        {
+            for(int i = 10; i >=0; i--)
+            {
+                location = new Point(random.Next(100), random.Next(100));
+                Console.WriteLine($"Asteroid's location: ({location.X}, {location.Y})");
+
+                if (i == 0)
+                {
+                    ShipExploded?.Invoke(this, EventArgs.Empty);
+                    AsteroidExplodedLocation?.Invoke(this, new AsteroidExplodedLocation(location));
+                }
+            }
+        }
+    }
+
+    // subscriber
+    public class SoundManager
+    {
+        private void OnPlaySound(object sender, EventArgs e) // no param
+        {
+            Console.WriteLine($"Buummmm");
+        }
+
+        private void OnPlaySoundLocation(object sender, AsteroidExplodedLocation e) // with param
+        {
+            Console.WriteLine($"Buummmm at location: ({e.Location.X}, {e.Location.Y})");
+        }
+
+        public SoundManager(Asteroid asteroid)
+        {
+            asteroid.ShipExploded += OnPlaySound;
+            asteroid.AsteroidExplodedLocation += OnPlaySoundLocation;
         }
     }
 }
