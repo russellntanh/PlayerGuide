@@ -12,12 +12,70 @@ namespace Advanced_Event
             //MessageManager showMess = new MessageManager(ship);
             //ship.Run();
 
-            Asteroid asteroid = new Asteroid();
-            SoundManager soundManager = new SoundManager(asteroid);
-            asteroid.Run();
+            //Asteroid asteroid = new Asteroid();
+            //SoundManager soundManager = new SoundManager(asteroid);
+            //asteroid.Run();
 
+            CharberryTree cherry = new CharberryTree();
+            Notifier notifier = new Notifier(cherry);
+            Harvester harvester = new Harvester(cherry);
+            
+            while(true)
+            {
+                cherry.MaybeGrow();
+            }
         }
     }
+
+    // publisher
+    public class CharberryTree
+    {
+        private Random _random = new Random();
+        public bool Ripe { get; set; }
+
+        public event EventHandler? _fruitRipen;
+
+        public void MaybeGrow()
+        {
+            var ranNum = _random.Next();
+            if (ranNum < 10 && !Ripe)
+            {
+                Console.WriteLine(ranNum);
+                Ripe = true;
+                _fruitRipen.Invoke(this, EventArgs.Empty);
+            }
+        }
+    }
+
+    // subscriber
+    public class Notifier
+    {
+        public void OnCharryRipen(object sender, EventArgs e)
+        {
+            Console.WriteLine("To Notifier: A fruit is ripen now.");
+        }
+
+        public Notifier(CharberryTree cherryTree)
+        {
+            cherryTree._fruitRipen += OnCharryRipen;
+        }
+
+    }
+
+    public class Harvester
+    {
+        public void OnCharryRipen(object sender, EventArgs e)
+        {
+            Console.WriteLine("To Harvester: A fruit is ripen now.");
+        }
+
+        public Harvester(CharberryTree cherryTree)
+        {
+            cherryTree._fruitRipen += OnCharryRipen;
+        }
+    }
+
+
 
     // publisher
     public class Ship
