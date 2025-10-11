@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Delegate", "..\Adv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Event", "..\Advanced_Event\Advanced_Event.csproj", "{1EB90718-C88B-4115-886F-E1E7472FFABF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Lambda", "..\Advanced_Lambda\Advanced_Lambda.csproj", "{1E5BAAE3-0394-4AC4-B02B-D3DFD287EF8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
