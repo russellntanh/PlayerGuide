@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Event", "..\Advanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Lambda", "..\Advanced_Lambda\Advanced_Lambda.csproj", "{1E5BAAE3-0394-4AC4-B02B-D3DFD287EF8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_File", "..\Advanced_File\Advanced_File.csproj", "{23E42E61-8629-4BE9-908F-2769199D645C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_PatternMatching", "..\Advanced_PatternMatching\Advanced_PatternMatching.csproj", "{8343CCC5-FF35-4F12-9742-4E0DDBAFC004}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
