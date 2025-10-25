@@ -7,6 +7,19 @@ namespace Advanced_Thread
     {
         public static void Main()
         {
+            GetEvenOddNumbers getEvenOddNumbers = new GetEvenOddNumbers();
+            Thread eventThread = new Thread(getEvenOddNumbers.GetEvenNumbers);
+            eventThread.Name = "Even Thread";
+            Thread oddThread = new Thread(getEvenOddNumbers.GetOddNumbers);
+            oddThread.Name = "Odd Thread";
+            
+            eventThread.Start();
+            oddThread.Start();
+            
+            eventThread.Join();
+            oddThread.Join();
+
+            // Test thread with lock
             SharedData sharedData = new SharedData();
             Thread thread = new Thread(sharedData.Increate); // sub thread
             thread.Start();
