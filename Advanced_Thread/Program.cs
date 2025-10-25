@@ -1,59 +1,45 @@
-﻿namespace Advanced_Thread
+﻿using System.Diagnostics;
+using System.Threading;
+
+namespace Advanced_Thread
 {
-    internal class Program
+    public class ThreadWithLock
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Main Thread Started.");
+            SharedData sharedData = new SharedData();
+            Thread thread = new Thread(sharedData.Increate); // sub thread
+            thread.Start();
+            thread.Join();
+            Console.WriteLine("Sub thread: " + sharedData.Count);
 
-            // ParameterStart : parameterless method
-            //Thread thread1 = new Thread(CountToHundred);
-            //thread1.Start();
-
-            // ParameterizedThreadStart : parameter method need to use lambda expression
-            //Thread thread2 = new Thread(() => CountToHundred(30));
-            //thread2.Start();
-
-            Calculation calc = new Calculation() { x = 10, y = 20 };
-            Thread thread3 = new Thread(AddNumbers);
-            thread3.Start(calc);
-            thread3.Join(); 
-            Console.WriteLine($"Result: {calc.result}");
-
-
-            Console.WriteLine("Main Thread Done.");
-        }
-
-        static void AddNumbers(object? data)
-        {
-            if (data == null) return;
-            Calculation calc = (Calculation)data;
-            calc.result = calc.x + calc.y;
-        }
-
-        // method with parameters
-        static void CountToHundred(int n)
-        {
-            for (int i = 0; i < n; i++)
-            {
-                Console.WriteLine(i + 1);
-            }
-        }
-
-        // method without parameters
-        static void CountToHundred()
-        {
-            for (int i = 0; i < 30; i++)
-            {
-                Console.WriteLine(i + 1);
-            }
+            sharedData.Increate();
+            Console.WriteLine("Main thread: " +sharedData.Count);
         }
     }
 
-    public class Calculation
+    public class SharedData
     {
-        public int x { get; set; }
-        public int y { get; set; }
-        public int result { get; set; }
+        private readonly object _lockNumber = new();
+        private int _count = 0;
+        public int Count
+        {
+            get 
+            {
+                lock(_lockNumber)
+                {
+                    return _count;
+                }
+            }
+        }
+
+        public void Increate()
+        {
+            lock (_lockNumber)
+            {
+                _count++;
+            }
+        }
+
     }
 }
